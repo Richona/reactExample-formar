@@ -6,7 +6,6 @@ export const ShowHideMessageMyPrac = () => {
     const { show, handleShowMessage } = useShow(false);
 
     const dateCreate = new Date("2023-01-19");
-    console.log(dateCreate)
     function formatDate(date) {
         let diff = new Date() - date; // la diferencia entre ambas, representada en milisegundos
         let sec = Math.floor(diff / 1000); // convierte el resultado en segundos

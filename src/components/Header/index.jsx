@@ -1,6 +1,11 @@
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export const Header = () => {
+  const changeColorBody = () =>{
+    document.querySelector("body").classList.toggle("gray")
+    console.log(document.querySelector("body"))
+  }
+
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -36,7 +41,7 @@ export const Header = () => {
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/showHideMessageMiPractica">
-              showHideMessageMiPractica
+                showHideMessageMiPractica
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/">
@@ -49,6 +54,7 @@ export const Header = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
+        <Form.Check type="switch" id="custom-switch" label="Modo oscuro" onClick={changeColorBody}/>
       </Container>
     </Navbar>
   );

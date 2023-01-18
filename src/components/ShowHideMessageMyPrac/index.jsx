@@ -1,5 +1,6 @@
-import { Button, Col, Container, OverlayTrigger, Row, Toast, Tooltip } from "react-bootstrap";
+import { Button, Col, Container, Dropdown, OverlayTrigger, Row, Toast, Tooltip } from "react-bootstrap";
 import { useShow } from "../../hook/useShow";
+import { useState } from "react";
 
 export const ShowHideMessageMyPrac = () => {
     const { show, handleShowMessage } = useShow(false);
@@ -34,6 +35,12 @@ export const ShowHideMessageMyPrac = () => {
         </Tooltip>
     );
 
+    const [color, setColor] = useState("red");
+
+    function colorChange (color) {
+        setColor(color)
+    }
+
     return (
         <Container>
             <Row className="mt-5">
@@ -45,7 +52,7 @@ export const ShowHideMessageMyPrac = () => {
                     >
                         {show ? "Ocultar" : "Mostrar"} mensaje
                     </Button>
-                    <Toast show={show} onClose={handleShowMessage} className="m-auto">
+                    <Toast show={show} onClose={handleShowMessage} className="m-auto"  style={{backgroundColor: color}}>
                         <Toast.Header>
                             <img
                                 src="holder.js/20x20?text=%20"
@@ -57,7 +64,19 @@ export const ShowHideMessageMyPrac = () => {
                                 <Button variant="light"><small className="ms-1">{formatDate(dateCreate)}</small></Button>
                             </OverlayTrigger>
                         </Toast.Header>
-                        <Toast.Body>Primer Clase!!</Toast.Body>
+                        <Toast.Body>
+                            Primer Clase!!
+                            <Dropdown className="d-inline mx-2">
+                                <Dropdown.Toggle id="dropdown-autoclose-true" variant="secondary">
+                                    Cambiar color :)
+                                </Dropdown.Toggle>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item onClick={() => {colorChange("red")}}>Rojo</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => {colorChange("blue")}}>Azul</Dropdown.Item>
+                                    <Dropdown.Item onClick={() => {colorChange("green")}}>Verde</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Toast.Body>
                     </Toast>
                 </Col>
             </Row>

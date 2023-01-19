@@ -1,14 +1,5 @@
 import { useRef, useState } from "react";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Row,
-  ProgressBar as BarProgress,
-  Form,
-  Modal,
-} from "react-bootstrap";
+import { Button, Card, Col, Container, Row, ProgressBar as BarProgress, Form, Modal,} from "react-bootstrap";
 import { ProgressBarDos } from "./ProgressBar2";
 
 export const ProgressBar2 = () => {
@@ -20,8 +11,7 @@ export const ProgressBar2 = () => {
 
   const handleDownload = () => {
     const valueInput = +inputRef.current?.value;
-    const isValueValid =
-      !isNaN(valueInput) && valueInput > 0 && valueInput <= 100;
+    const isValueValid = !isNaN(valueInput) && valueInput > 0 && valueInput <= 100;
     setShowModal(!isValueValid);
 
     if (intervalState) {
@@ -36,7 +26,12 @@ export const ProgressBar2 = () => {
             clearInterval(interval);
             return now;
           }
-          return now + 1;
+
+          if ( now < valueInput) {
+            return now + 1
+          }else{
+            return now - 1
+          }
         });
       }, 1000);
 
@@ -57,8 +52,10 @@ export const ProgressBar2 = () => {
     /* console.log(value);
     console.log(+value);
     console.log(!!+value);
-    console.log(Boolean(+value)); */
-    setBtnDisable(!!!+value);
+    console.log(Boolean(+value));
+    console.log(!!+value)
+    console.log("--------------------------") */
+    setBtnDisable(!!!+value);/* !! pregunta si es booleano, ! lo niega y + lo parsea */
   };
 
   const handleClose = () => setShowModal(false);

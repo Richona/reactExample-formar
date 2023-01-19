@@ -1,8 +1,8 @@
 import { Button, Col, Container, Dropdown, OverlayTrigger, Row, Toast, Tooltip } from "react-bootstrap";
-import { useShow } from "../../hook/useShow";
+import { useShow } from "../../../hook/useShow";
 import { useState } from "react";
 
-export const ShowHideMessageMyPrac = () => {
+export const ShowHideMessage2 = () => {
     const { show, handleShowMessage } = useShow(false);
 
     const dateCreate = new Date("2023-01-19");

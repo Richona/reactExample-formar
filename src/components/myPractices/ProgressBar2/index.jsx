@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
-import { Button, Card, Col, Container, Row, ProgressBar as BarProgress, Form, Modal,} from "react-bootstrap";
+import { Button, Card, Col, Container, Row, ProgressBar as BarProgress, Form, Modal, Dropdown, DropdownButton, } from "react-bootstrap";
 import { ProgressBarDos } from "./ProgressBar2";
+import styles from "./styles.module.css";
 
 export const ProgressBar2 = () => {
   const [now, setNow] = useState(0);
   const [intervalState, setIntervalState] = useState(null);
+  const [intervalTime, setintervalTime] = useState(1000);
   const inputRef = useRef(null);
   const [btnDisable, setBtnDisable] = useState(true);
   const [showModal, setShowModal] = useState(false);
@@ -27,13 +29,13 @@ export const ProgressBar2 = () => {
             return now;
           }
 
-          if ( now < valueInput) {
+          if (now < valueInput) {
             return now + 1
-          }else{
+          } else {
             return now - 1
           }
         });
-      }, 1000);
+      }, intervalTime);
 
       setIntervalState(interval);
     } else {
@@ -74,7 +76,7 @@ export const ProgressBar2 = () => {
                 variant="danger"
               />
 
-              <ProgressBarDos now={now} label={`${now}%`}/>
+              <ProgressBarDos now={now} label={`${now}%`} />
 
               <Form.Control
                 ref={inputRef}
@@ -93,6 +95,12 @@ export const ProgressBar2 = () => {
               <Button variant="danger" onClick={handleReset}>
                 Reiniciar
               </Button>
+              <DropdownButton id="dropdown-item-button" title="Tiempo" className={styles.buttonTime}>
+                <Dropdown.Item as="button" onClick={() => setintervalTime(250)}>250ms</Dropdown.Item>
+                <Dropdown.Item as="button" onClick={() => setintervalTime(500)}>500ms</Dropdown.Item>
+                <Dropdown.Item as="button" onClick={() => setintervalTime(1000)}>1000ms</Dropdown.Item>
+                <Dropdown.Item as="button" onClick={() => setintervalTime(1500)}>1500ms</Dropdown.Item>
+              </DropdownButton>
             </Card.Body>
           </Card>
         </Col>

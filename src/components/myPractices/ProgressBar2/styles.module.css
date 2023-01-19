@@ -1,3 +1,10 @@
+/* index */
+.buttonTime{
+  display: inline-block;
+  margin-left: 4px;
+}
+
+/* ProgressBar2 */
 .progressContainer{
     position: relative;
     width: 100%;

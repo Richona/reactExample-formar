@@ -1,8 +1,15 @@
 import { Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export const Header = () => {
-  const changeColorBody = () =>{
+  const changeColorBody = (event) =>{
     document.querySelector("body").classList.toggle("gray")
+    if (document.querySelector("body").classList.contains("gray")) {
+      localStorage.setItem("colorBody", "gray")
+    }else{
+      localStorage.removeItem("colorBody")
+    }
+    console.log(localStorage.getItem("colorBody"))
+    console.log(document.querySelector("body").classList.contains("gray"))
     console.log(document.querySelector("body"))
   }
 
@@ -58,7 +65,8 @@ export const Header = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Form.Check type="switch" id="custom-switch" label="Modo oscuro" onClick={changeColorBody}/>
+        <Form.Check type="switch" id="custom-switch" label="Modo oscuro" onClick={changeColorBody}  
+        checked />
       </Container>
     </Navbar>
   );

@@ -53,6 +53,10 @@ export const Header = () => {
                 Progress Bar 2
               </NavDropdown.Item>
               <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/myPractice/stopwatchTimer">
+                Stopwatch / Timer 2
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/">
                 Counter
               </NavDropdown.Item>

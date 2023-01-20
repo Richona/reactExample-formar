@@ -8,9 +8,11 @@ export const Header = () => {
     }else{
       localStorage.removeItem("colorBody")
     }
-    console.log(localStorage.getItem("colorBody"))
-    console.log(document.querySelector("body").classList.contains("gray"))
-    console.log(document.querySelector("body"))
+  }
+  let changeDarkTheme = localStorage.getItem("colorBody")
+
+  window.onload = () =>{
+    changeDarkTheme && document.querySelector("body").classList.add("gray")
   }
 
   return (
@@ -66,7 +68,7 @@ export const Header = () => {
           </Nav>
         </Navbar.Collapse>
         <Form.Check type="switch" id="custom-switch" label="Modo oscuro" onClick={changeColorBody}  
-        checked />
+        defaultChecked={changeDarkTheme === "gray"}/>
       </Container>
     </Navbar>
   );

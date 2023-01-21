@@ -5,7 +5,7 @@ import { FormTask } from "./Form";
 
 export const TaskManager = () => {
   const refForm = useRef(null);
-  const [inputsValues,setInputsValues,handleChangeInputsValue, reset] = useForm({},refForm)
+  const [inputsValues,/* setInputsValues */,handleChangeInputsValue, reset] = useForm({},refForm)
 
     const handleSubmit = (e) => {
       e.preventDefault();

@@ -3,6 +3,7 @@ import {Button,ButtonGroup,Card,Col,Container,Row,} from "react-bootstrap";
 
 const oneOrTwoNum = (num) => (num > 9 ? num : `0${num}`);
 const pluralSingular = (num) => (num > 1 ? "s" : "");
+
 export const StopwatchTimer2 = () => {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -52,9 +53,14 @@ export const StopwatchTimer2 = () => {
       velocity ? 1000 / velocity : 1000
     );
 
+    
     setIntervalHours(intervalHours);
     setIntervalMinutes(intervalMinutes);
     setIntervalSeconds(intervalSeconds);
+    console.log(intervalHours)
+    console.log(intervalMinutes)
+    console.log(intervalSeconds)
+    console.log("----------------")
   };
 
   const handleStop = () => {
@@ -81,7 +87,7 @@ export const StopwatchTimer2 = () => {
   };
 
   const handleVelocity = (vel, velText) => {
-    console.log(vel);
+    
     setVelocity(vel);
     setVelocityName(velText);
     handleStop();

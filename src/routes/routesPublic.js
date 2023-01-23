@@ -8,6 +8,7 @@ import { StopwatchTimer } from '../components/StopwatchTimer'
 import { StopwatchTimer2 } from '../components/myPractices/StopwatchTimer2'
 import { TaskManager } from '../components/TaskManager'
 import { TaskManager2 } from '../components/myPractices/TaskManager2'
+import { Counter } from '../components/myPractices/Counter'
 
 export const routesPublic =  [
     {
@@ -45,6 +46,10 @@ export const routesPublic =  [
     {
       path: "/myPractice/taskManager",
       element: <TaskManager2 />,
+    },
+    {
+      path: "/myPractice/counter",
+      element: <Counter />,
     },
     {
       path: "/*",

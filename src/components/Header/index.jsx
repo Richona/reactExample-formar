@@ -61,7 +61,7 @@ export const Header = () => {
                 Task Manager with validations
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/">
+              <NavDropdown.Item as={Link} to="/myPractice/counter">
                 Counter
               </NavDropdown.Item>
               <NavDropdown.Divider />

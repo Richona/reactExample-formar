@@ -1,17 +1,17 @@
 import { Container, Form, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export const Header = () => {
-  const changeColorBody = (event) =>{
+  const changeColorBody = (event) => {
     document.querySelector("body").classList.toggle("gray")
     if (document.querySelector("body").classList.contains("gray")) {
       localStorage.setItem("colorBody", "gray")
-    }else{
+    } else {
       localStorage.removeItem("colorBody")
     }
   }
   let changeDarkTheme = localStorage.getItem("colorBody")
 
-  window.onload = () =>{
+  window.onload = () => {
     changeDarkTheme && document.querySelector("body").classList.add("gray")
   }
 
@@ -57,12 +57,12 @@ export const Header = () => {
                 Stopwatch / Timer 2
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/">
-                Counter
+              <NavDropdown.Item as={Link} to="/myPractice/taskManager">
+                Task Manager with validations
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/">
-                Task Manager with validations
+                Counter
               </NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/">
@@ -71,8 +71,8 @@ export const Header = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Form.Check type="switch" id="custom-switch" label="Modo oscuro" onClick={changeColorBody}  
-        defaultChecked={changeDarkTheme === "gray"}/>
+        <Form.Check type="switch" id="custom-switch" label="Modo oscuro" onClick={changeColorBody}
+          defaultChecked={changeDarkTheme === "gray"} />
       </Container>
     </Navbar>
   );

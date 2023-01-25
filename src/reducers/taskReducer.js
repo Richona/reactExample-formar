@@ -10,6 +10,7 @@ export const taskReducer = (state, action) => {
       const newTask = {
         ...inputsValues,
         id: generateId(),
+        img: inputsValues.img ? inputsValues.img : "https://www.freeiconspng.com/uploads/no-image-icon-13.png",
         active: false,
         completed: false,
         date: new Date().toLocaleString() /*  dd/mm/yyyy 00:00:00   */,

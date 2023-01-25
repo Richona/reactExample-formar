@@ -24,44 +24,55 @@ export const TaskManager2 = () => {
     useForm(formTaskInitialState, refForm);
   const [action, setAction] = useState("CREATE");
   const [statusFilter, setStatusFilter] = useState(filterTask.ALL);
+  const [validated, setValidated] = useState(false);
 
   const tasksStore = localStorage.getItem("tasks2")
   const initialStateReducer = JSON.parse(tasksStore) || []
   const [tasks, dispatch] = useReducer(taskReducer, initialStateReducer); // dispatch({type,payload})
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    } else {
+      e.preventDefault();
 
-    if (action === "CREATE") {
-      dispatch({ type: "ADD", payload: inputsValues });
-      /* 
-      {
-    id,
-    title,
-    description,
-    img,
-    active,
-    completed,
-    date,
-  } */
+      if (action === "CREATE") {
+        dispatch({ type: "ADD", payload: inputsValues });
+        /* 
+        {
+      id,
+      title,
+      description,
+      img,
+      active,
+      completed,
+      date,
+    } */
+      }
+
+      if (action === "UPDATE") {
+        dispatch({ type: "UPDATE", payload: inputsValues });
+        /* 
+        {
+      id,
+      title,
+      description,
+      img,
+      active,
+      completed,
+      date,
+    } */
+      }
+
+      reset();
+      setAction("CREATE");
     }
 
-    if (action === "UPDATE") {
-      dispatch({ type: "UPDATE", payload: inputsValues });
-      /* 
-      {
-    id,
-    title,
-    description,
-    img,
-    active,
-    completed,
-    date,
-  } */
-    }
+    setValidated(true);
 
-    reset();
-    setAction("CREATE");
+
   };
 
   useEffect(() => {
@@ -128,6 +139,7 @@ export const TaskManager2 = () => {
             refForm={refForm}
             action={action}
             onReset={handleReset}
+            validated={validated}
           />
         </Col>
         <Col

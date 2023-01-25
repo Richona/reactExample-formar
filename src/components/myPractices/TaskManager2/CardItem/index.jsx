@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Form, Image, Toast } from "react-bootstrap";
 import classes from "./style.module.css";
 
@@ -8,6 +9,11 @@ export const CardItem = ({
   onActive,
   onCompleted,
 }) => {
+  const [changed, setChange] = useState(false);
+  
+  const handleShowBody = () =>{
+    setChange(c => !c);
+  }
   return (
     <Toast
       onClose={() => onDelete(task.id)}
@@ -15,11 +21,13 @@ export const CardItem = ({
       className={classes.toast}
     >
       <Toast.Header>
+        <i className={`fa-solid ${changed ? "fa-caret-down" : "fa-caret-up"}`} onClick={handleShowBody}></i>
         <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
         <strong className="me-auto">{task.title}</strong>
         <small>{task.date}</small>
+        
       </Toast.Header>
-      <Toast.Body>
+      <Toast.Body className={`${changed ? classes.showBodyCardItem : ''}`}>
         <Image fluid src={task.img} alt="" className={classes["img-100"]} />
         <p className="ps-2 d-inline-block">{task.description}</p>
 
@@ -28,7 +36,7 @@ export const CardItem = ({
             name="active"
             id={`active-${task.id}`}
             onClick={() => onActive(task.id)}
-            checked={task.active}
+            defaultChecked={task.active}
           />
           <Form.Label htmlFor={`active-${task.id}`}>{task.active ? "En proceso" : "Pendiente"}</Form.Label>
         </Form.Group>
@@ -38,7 +46,7 @@ export const CardItem = ({
             name="completed"
             id={`completed-${task.id}`}
             onClick={() => onCompleted(task.id)}
-            checked={task.completed}
+            defaultChecked={task.completed}
           />
           <Form.Label htmlFor={`completed-${task.id}`}>{task.completed ? "Completado" : "Completar"}</Form.Label>
         </Form.Group>

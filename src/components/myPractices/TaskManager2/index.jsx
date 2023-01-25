@@ -65,7 +65,6 @@ export const TaskManager2 = () => {
   };
 
   useEffect(() => {
-    console.log(tasks);
     localStorage.setItem("tasks2", JSON.stringify(tasks));
   }, [tasks]);
 

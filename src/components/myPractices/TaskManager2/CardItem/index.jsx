@@ -17,7 +17,7 @@ export const CardItem = ({
   return (
     <Toast
       onClose={() => onDelete(task.id)}
-      bg={task.active ? "success" : null}
+      bg={task.completed ? "success" : task.active ? "warning" : "secondary"}
       className={classes.toast}
     >
       <Toast.Header>

@@ -115,7 +115,7 @@ export const TaskManager2 = () => {
   }*/
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5 text-center bg-white rounded p-5">
       <Row>
         <Col sm={12} lg={{ span: 6, offset: 5 }} className="mb-4">
           <TaskFilter onChangeFilter={handleStatusFilter} />

@@ -107,7 +107,7 @@ export const TaskManager2 = () => {
       case filterTask.PROCESS:
         return task.active === true;
       case filterTask.PENDING:
-        return task.active === false;
+        return task.active === false && task.completed === false;
       case filterTask.COMPLETED:
         return task.completed === true;
       default:
@@ -129,7 +129,7 @@ export const TaskManager2 = () => {
     <Container className="mt-5 text-center bg-white rounded p-5">
       <Row>
         <Col sm={12} lg={{ span: 6, offset: 5 }} className="mb-4">
-          <TaskFilter onChangeFilter={handleStatusFilter} />
+          <TaskFilter onChangeFilter={handleStatusFilter} statusFilter={statusFilter}/>
         </Col>
         <Col sm={12} lg={3}>
           <FormTask
